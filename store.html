@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No NaMe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Caveat', cursive;
+        }
+    </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* General Section Styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('./store/no_name_bcg_image.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #000; /* Changed background color to black */
+            color: white; /* Changed text color to white for better readability */
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #about h2 {
+            font-size: 2.5rem; /* Increased font size */
+            margin-bottom: 1rem;
+        }
+
+        #about p {
+            font-size: 1.5rem; /* Increased font size */
+            max-width: 600px;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #gallery h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+        }
+
+        #contact a {
+            color: lightblue;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Features Section */
+        #features {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #features h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .testimonial {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CTA Section */
+        #cta {
+            background-color: #fff;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        #cta button {
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                    else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        No NaMe
+    </header>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <style>
+        .caveat-font {
+            font-family: 'Caveat', cursive;
+        }
+    </style>
+
+    <section id="hero" class="hero">
+        <h1>Find Your Style</h1>
+        <p>Your one-stop destination for fashionable and comfortable clothing.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Cloth Store, we believe in providing high-quality clothing that combines style and comfort. Explore our collection to redefine your wardrobe.</p>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="./store/no_name_style1.jpg" alt="Cloth 1">
+            <img src="./store/no_name_style2.jpg" alt="Cloth 2">
+            <img src="./store/no_name_style3.jpg" alt="Cloth 3">
+            <img src="./store/no_name_style4.jpg" alt="Cloth 4">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Phone: <a href="tel:+918271645462">8271645462</a></p>
+        <p>Email: <a href="mailto:info@clothstore.com">info@clothstore.com</a></p>
+        <p>Address: <a href="https://www.google.com/maps/place/NO+NAME+COLLECTION/@25.5961805,85.1997657,15z/data=!4m12!1m2!2m1!1sno+name!3m8!1s0x39ed5f4b0a517767:0xdd871993522cc4f4!8m2!3d25.6002285!4d85.2072955!9m1!1b1!15sCgdubyBuYW1lWgkiB25vIG5hbWWSAQ5jbG90aGluZ19zdG9yZeABAA!16s%2Fg%2F11pbfsb3zm?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">No NaMe Collections, Patna</a> </p>
+    </section>
+
+    <!-- <section id="features">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Exclusive Designs</h3>
+                <p>Discover unique and trendy designs that set you apart from the crowd.</p>
+            </div>
+            <div class="feature">
+                <h3>Premium Quality</h3>
+                <p>Experience the best quality fabrics and craftsmanship in every piece.</p>
+            </div>
+            <div class="feature">
+                <h3>Affordable Prices</h3>
+                <p>Get the best value for your money with our competitive pricing.</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <section id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Cloth Store has completely transformed my wardrobe. The quality and designs are unmatched!"</p>
+                <h4>- Jane Doe</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I love shopping at Cloth Store. The prices are great and the clothes are always stylish."</p>
+                <h4>- John Smith</h4>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="cta">
+        <h2>Join Our Community</h2>
+        <!-- <p>Sign up for our newsletter to stay updated on the latest trends and exclusive offers.</p> -->
+        <!-- <button>Sign Up</button> -->
+         <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+
+    <div style="display: flex; gap: 5px; justify-content: center; padding: 1rem 0;">
+        <button style="background: none; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/no_name_collection_01/';">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 20px; height: 20px;">
+        </button>
+
+        <button style="background: none; border: none; cursor: pointer;" onclick="window.location.href='https://api.whatsapp.com/send?phone=8271645462&text=Hi%21%20I am looking for new Collections%20m.';">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px;">
+        </button>
+    </div>
+    <style>
+        @media (min-width: 768px) {
+            .cta-buttons img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cta-buttons img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+
+    
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i> -->
+</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 No NaMe Collection. All rights reserved.</p>
+    </footer>
+</body>
+</html>
